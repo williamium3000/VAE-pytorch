@@ -75,7 +75,7 @@ def train(model, optimizer, lr_scheduler, dataloaders, device, epochs):
         sample(model, device, e)
 
     
-        writer.add_scalars("out_CVAE_loss", {"loss":loss.item(), "BEC":BEC.item(), "KLD":KLD.item()}, e)
+        writer.add_scalars("CVAE_loss", {"loss":loss.item(), "BCE":BEC.item(), "KLD":KLD.item()}, e)
         save_model(save_dir='model_checkpoint_CVAE', file_name="check_point", model=model, optimizer = optimizer, lr_scheduler = lr_scheduler)
 
 

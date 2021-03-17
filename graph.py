@@ -13,9 +13,16 @@ def load_data_from_tensorboard(path):
     data = [i.value for i in val_psnr]
     return data
 
+# BCE_loss = load_data_from_tensorboard("runs/Mar17_04-10-48_06bed19cdc6a/loss_BCE/events.out.tfevents.1615954259.06bed19cdc6a.8881.2")
+# KL_loss = load_data_from_tensorboard("runs/Mar17_04-10-48_06bed19cdc6a/loss_KLD/events.out.tfevents.1615954259.06bed19cdc6a.8881.3")
+# loss = load_data_from_tensorboard("runs/Mar17_04-10-48_06bed19cdc6a/loss_loss/events.out.tfevents.1615954259.06bed19cdc6a.8881.1")
+
+
 BCE_loss = load_data_from_tensorboard("runs/Mar17_04-10-48_06bed19cdc6a/loss_BCE/events.out.tfevents.1615954259.06bed19cdc6a.8881.2")
 KL_loss = load_data_from_tensorboard("runs/Mar17_04-10-48_06bed19cdc6a/loss_KLD/events.out.tfevents.1615954259.06bed19cdc6a.8881.3")
 loss = load_data_from_tensorboard("runs/Mar17_04-10-48_06bed19cdc6a/loss_loss/events.out.tfevents.1615954259.06bed19cdc6a.8881.1")
+
+
 x = list(range(len(KL_loss)))
 ax1 = plt.subplot(1,1,1)
 
