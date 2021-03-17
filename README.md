@@ -48,7 +48,7 @@ Moreover, we also plot all the point latent points in the latent space of every 
 ## experiments and results
 
 ### VAE
-CVAE model is trained using mnist for 50 epochs with learning rate of 0.01, a weight decay of 1e-4 and some learning rate decay(step decay with 0.5 every 100 steps) 
+VAE model is trained using mnist for 50 epochs with learning rate of 0.01, a weight decay of 1e-4 and some learning rate decay(step decay with 0.5 every 100 steps) 
 
 ![](images/VAE_loss.png)
 The following are some generated examples
