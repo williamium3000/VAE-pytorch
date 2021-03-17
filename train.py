@@ -66,8 +66,8 @@ def train(model, optimizer, lr_scheduler, dataloaders, device, epochs):
             loss.backward()
             optimizer.step()
             lr_scheduler.step()
-        print('epoche %d, loss = %f' % (e, loss.item()))
-        logging.info('epoche %d, loss = %f' % (e, loss.item()))
+        print('epoche %d, loss = %f, BCE loss = %f, KLD loss = %f' % (e, loss.item(), BCE.item(), KLD.item()))
+        logging.info('epoche %d, loss = %f, BCE loss = %f, KLD loss = %f' % (e, loss.item(), BCE.item(), KLD.item()))
 
         sample(model, device, e)
 

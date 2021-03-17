@@ -64,18 +64,18 @@ def train(model, optimizer, lr_scheduler, dataloaders, device, epochs):
             x = x.to(device=device)
             y = y.to(device=device)
             gen_image, mu, logvar = model(x, y)
-            loss, BEC, KLD = loss_func(gen_image, x.view(x.size(0), -1), mu, logvar)
+            loss, BCE, KLD = loss_func(gen_image, x.view(x.size(0), -1), mu, logvar)
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
             lr_scheduler.step()
-        print('epoche %d, loss = %f' % (e, loss.item()))
-        logging.info('epoche %d, loss = %f' % (e, loss.item()))
+        print('epoche %d, loss = %f, BCE loss = %f, KLD loss = %f' % (e, loss.item(), BCE.item(), KLD.item()))
+        logging.info('epoche %d, loss = %f, BCE loss = %f, KLD loss = %f' % (e, loss.item(), BCE.item(), KLD.item()))
 
         sample(model, device, e)
 
     
-        writer.add_scalars("loss", {"loss":loss.item(), "BCE":BEC.item(), "KLD":KLD.item()}, e)
+        writer.add_scalars("loss", {"loss":loss.item(), "BCE":BCE.item(), "KLD":KLD.item()}, e)
         save_model(save_dir='model_checkpoint_CVAE', file_name="check_point", model=model, optimizer = optimizer, lr_scheduler = lr_scheduler)
 
 
@@ -117,7 +117,7 @@ lr = 0.01
 weight_decay = 1e-4
 step_size = 100
 gamma = 0.5
-batch_size = 128
+batch_size = 256
 device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
 load_checkpoint = False
 mutil_gpu = False

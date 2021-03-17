@@ -27,7 +27,7 @@ def loss_fn(gen_x, x, mu, logvar):
     # print(KLD_element.shape)
     KLD = torch.sum(KLD_element).mul_(-0.5)
     # KL divergence
-    return (BCE + KLD) / x.shape[0], BCE / x.shape[0], KLD / x.shape[0]
+    return (BCE +  KLD) / x.shape[0], BCE / x.shape[0], KLD / x.shape[0]
 
 
 def onehot(idx, n):
