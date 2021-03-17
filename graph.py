@@ -12,15 +12,15 @@ def load_data_from_tensorboard(path):
 
     data = [i.value for i in val_psnr]
     return data
+# CVAE
+BCE_loss = load_data_from_tensorboard("runs/Mar17_05-00-30_06bed19cdc6a/loss_BCE/events.out.tfevents.1615957245.06bed19cdc6a.20271.2")
+KL_loss = load_data_from_tensorboard("runs/Mar17_05-00-30_06bed19cdc6a/loss_KLD/events.out.tfevents.1615957245.06bed19cdc6a.20271.3")
+loss = load_data_from_tensorboard("runs/Mar17_05-00-30_06bed19cdc6a/loss_loss/events.out.tfevents.1615957245.06bed19cdc6a.20271.1")
 
-# BCE_loss = load_data_from_tensorboard("runs/Mar17_04-10-48_06bed19cdc6a/loss_BCE/events.out.tfevents.1615954259.06bed19cdc6a.8881.2")
-# KL_loss = load_data_from_tensorboard("runs/Mar17_04-10-48_06bed19cdc6a/loss_KLD/events.out.tfevents.1615954259.06bed19cdc6a.8881.3")
-# loss = load_data_from_tensorboard("runs/Mar17_04-10-48_06bed19cdc6a/loss_loss/events.out.tfevents.1615954259.06bed19cdc6a.8881.1")
-
-
-BCE_loss = load_data_from_tensorboard("runs/Mar17_04-10-48_06bed19cdc6a/loss_BCE/events.out.tfevents.1615954259.06bed19cdc6a.8881.2")
-KL_loss = load_data_from_tensorboard("runs/Mar17_04-10-48_06bed19cdc6a/loss_KLD/events.out.tfevents.1615954259.06bed19cdc6a.8881.3")
-loss = load_data_from_tensorboard("runs/Mar17_04-10-48_06bed19cdc6a/loss_loss/events.out.tfevents.1615954259.06bed19cdc6a.8881.1")
+# VAE
+# BCE_loss = load_data_from_tensorboard("runs/Mar17_05-00-23_06bed19cdc6a/loss_BCE/events.out.tfevents.1615957234.06bed19cdc6a.20225.2")
+# KL_loss = load_data_from_tensorboard("runs/Mar17_05-00-23_06bed19cdc6a/loss_KLD/events.out.tfevents.1615957234.06bed19cdc6a.20225.3")
+# loss = load_data_from_tensorboard("runs/Mar17_05-00-23_06bed19cdc6a/loss_loss/events.out.tfevents.1615957234.06bed19cdc6a.20225.1")
 
 
 x = list(range(len(KL_loss)))
@@ -32,7 +32,6 @@ ax1.plot(x, loss, color="yellow",linewidth=1, label = "total loss")
 
 plt.xlabel("epoch")
 plt.ylabel("loss")
-plt.title("loss with respect to epoch(VAE)")
+plt.title("loss with respect to epoch(CVAE)")
 ax1.legend()
 plt.show()
-# plt.savefig("VAE.png")
